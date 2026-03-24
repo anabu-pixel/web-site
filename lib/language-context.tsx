@@ -1,0 +1,142 @@
+"use client"
+
+import { createContext, useContext, useState, type ReactNode } from "react"
+
+type Language = "en" | "uk"
+
+interface LanguageContextType {
+  language: Language
+  setLanguage: (lang: Language) => void
+  t: (key: string) => string
+}
+
+const translations: Record<Language, Record<string, string>> = {
+  en: {
+    // Hero
+    "hero.title": "Anastasiia Buda",
+    "hero.subtitle": "Filmmaker / Editor / AI Visionary",
+    "hero.aboutMe": "About Me",
+    
+    // About Modal
+    "about.title": "About Me",
+    "about.p1": "Hi, I'm Anastasiia, a filmmaker and director with a passion for unconventional, whimsical, and fantastical storytelling. I create visuals that blend humor, surrealism, and immersive aesthetics, crafting narratives that are both visually striking and emotionally engaging.",
+    "about.p2": "Traveling and exploring different cultures continually inspires and enriches my cinematic vision. I graduated in 2019 with a Bachelor's degree in Film Directing from Kyiv National University of Theatre, Cinema and Television.",
+    "about.p3": "From 2017 to 2022, I gained extensive experience on large-scale productions with Starlightmedia, Film.ua, No Stars Production, IQ Production, etc. working in complex shooting environments and developing the skills to guide teams under challenging conditions. After this, I directed my own projects, including short films and music videos, managing teams of over 20 people and overseeing full-cycle production from concept development to final post-production.",
+    "about.p4": "Between 2020 and 2022, I worked as a Director at Cinema Friends, overseeing projects and guiding creative decisions to deliver high-quality, visually thoughtful content.",
+    "about.p5": "Since 2022, I have expanded my practice as a free auditor at the Leon Schiller National Film School in Lodz and later relocated to Switzerland, where I created experimental photography and AI-integrated film projects.",
+    "about.p6": "My work was recognized as runner-up in the 2025 Genero Creative Challenge, reflecting my ability to merge imagination, personal style, and technological innovation into compelling visual narratives.",
+    
+    // Portfolio
+    "portfolio.title": "Portfolio",
+    "portfolio.about": "About",
+    "portfolio.myRole": "My Role",
+    
+    // Project: Funeral Agency
+    "project.funeral.title": "Funeral Agency of the Future",
+    "project.funeral.description": "Conceptual advertising video created specifically for the Genero AI Creative Challenge.\nSelected as a Runner-Up.\nA speculative vision of a funeral agency of the future, rethinking rituals of farewell through design, technology, and changing cultural values.",
+    "project.funeral.role": "Concept, Creative Direction, Visual Narrative, AI Prompting, Editing",
+    
+    // Project: Music Video
+    "project.music.title": "Music Video",
+    "project.music.description": "Directed from concept to final vision, shaping story, visuals, and aesthetic inspired by mythological themes, while leading the creative team.",
+    "project.music.role": "Director & Creative Lead, Concept & Production Oversight",
+    
+    // Creative Sprint
+    "sprint.title": "Creative Sprint",
+    "sprint.description": "Selected works from a video marathon.\n40 short-form videos shot and edited in two weeks under expedition conditions, based on assigned themes.\nWinning team.",
+    "sprint.role": "Concept & Creative Direction, Story & Visual Development, Team Leadership, Editing & Post-Production Oversight",
+    
+    // Sprint Videos
+    "sprint.alien.title": "Alien Dance",
+    "sprint.alien.description": "Atmospheric experimental dance video.",
+    "sprint.sands.title": "Sands of Silence",
+    "sprint.sands.description": "Experimental short reflecting on time, filmed in a desert landscape.",
+    "sprint.treasure.title": "Treasure Hunt",
+    "sprint.treasure.description": "Experimental Western-comedy short, imagining a playful concept for a lipstick ad.",
+    
+    // Contact
+    "contact.title": "Let's Build Worlds Together",
+    "contact.subtitle": "Ready to create something extraordinary?",
+    "contact.name": "Your Name",
+    "contact.email": "Your Email",
+    "contact.message": "Your Message",
+    "contact.send": "Send Message",
+    "contact.connect": "Connect with me",
+  },
+  uk: {
+    // Hero
+    "hero.title": "Анастасія Буда",
+    "hero.subtitle": "Режисерка / Монтажерка / AI Візіонерка",
+    "hero.aboutMe": "Про мене",
+    
+    // About Modal
+    "about.title": "Про мене",
+    "about.p1": "Привіт, я Анастасія — режисерка з пристрастю до нетипового, химерного та фантастичного сторітелінгу. Я створюю візуали, що поєднують гумор, сюрреалізм та імерсивну естетику, формуючи наративи, які є водночас візуально вражаючими та емоційно захопливими.",
+    "about.p2": "Подорожі та дослідження різних культур постійно надихають і збагачують моє кінематографічне бачення. У 2019 році я отримала ступінь бакалавра з кінорежисури в Київському національному університеті театру, кіно і телебачення імені І. К. Карпенка-Карого.",
+    "about.p3": "З 2017 по 2022 рік я набула великого досвіду на масштабних продакшенах з Starlightmedia, Film.ua, No Stars Production, IQ Production та ін., працюючи в складних умовах зйомок та розвиваючи навички керування командами в непростих обставинах. Після цього я режисувала власні проекти, включаючи короткометражні фільми та музичні відео, керуючи командами понад 20 людей та контролюючи повний цикл виробництва від розробки концепції до фінального пост-продакшену.",
+    "about.p4": "Між 2020 та 2022 роками я працювала режисеркою в Cinema Friends, керуючи проектами та приймаючи креативні рішення для створення високоякісного, візуально продуманого контенту.",
+    "about.p5": "З 2022 року я розширила свою практику як вільний слухач у Національній кіношколі імені Леона Шиллера в Лодзі, а пізніше переїхала до Швейцарії, де створювала експериментальну фотографію та кінопроекти з інтеграцією AI.",
+    "about.p6": "Моя робота була відзначена як runner-up на 2025 Genero Creative Challenge, що відображає мою здатність поєднувати уяву, особистий стиль та технологічні інновації у переконливих візуальних наративах.",
+    
+    // Portfolio
+    "portfolio.title": "Портфоліо",
+    "portfolio.about": "Опис",
+    "portfolio.myRole": "Моя роль",
+    
+    // Project: Funeral Agency
+    "project.funeral.title": "Похоронне агентство майбутнього",
+    "project.funeral.description": "Концептуальне рекламне відео, створене спеціально для Genero AI Creative Challenge.\nВідзначено як Runner-Up.\nСпекулятивне бачення похоронного агентства майбутнього, переосмислення ритуалів прощання через дизайн, технології та зміну культурних цінностей.",
+    "project.funeral.role": "Концепт, Креативна режисура, Візуальний наратив, AI Промптинг, Монтаж",
+    
+    // Project: Music Video
+    "project.music.title": "Музичне відео",
+    "project.music.description": "Режисура від концепції до фінального бачення, формування історії, візуалів та естетики, натхненної міфологічними темами, з керуванням креативною командою.",
+    "project.music.role": "Режисерка та Креативний лід, Концепт та Нагляд за продакшеном",
+    
+    // Creative Sprint
+    "sprint.title": "Креативний Спринт",
+    "sprint.description": "Вибрані роботи з відео-марафону.\n40 коротких відео, знятих та змонтованих за два тижні в експедиційних умовах, за заданими темами.\nКоманда-переможець.",
+    "sprint.role": "Концепт та Креативна режисура, Розробка історії та візуалів, Лідерство команди, Монтаж та Нагляд за пост-продакшеном",
+    
+    // Sprint Videos
+    "sprint.alien.title": "Інопланетний танець",
+    "sprint.alien.description": "Атмосферне експериментальне танцювальне відео.",
+    "sprint.sands.title": "Піски тиші",
+    "sprint.sands.description": "Експериментальний короткометражний фільм про час, знятий у пустельному ландшафті.",
+    "sprint.treasure.title": "Полювання за скарбами",
+    "sprint.treasure.description": "Експериментальний вестерн-комедійний короткометражний фільм, що уявляє грайливу концепцію реклами помади.",
+    
+    // Contact
+    "contact.title": "Давайте створювати світи разом",
+    "contact.subtitle": "Готові створити щось надзвичайне?",
+    "contact.name": "Ваше ім'я",
+    "contact.email": "Ваш Email",
+    "contact.message": "Ваше повідомлення",
+    "contact.send": "Надіслати",
+    "contact.connect": "Зв'яжіться зі мною",
+  },
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>("en")
+
+  const t = (key: string): string => {
+    return translations[language][key] || key
+  }
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  )
+}
+
+export function useLanguage() {
+  const context = useContext(LanguageContext)
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider")
+  }
+  return context
+}
