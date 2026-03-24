@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react"
 
-type Language = "en" | "uk"
+type Language = "en" | "uk" | "de"
 
 interface LanguageContextType {
   language: Language
@@ -114,6 +114,58 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.message": "Ваше повідомлення",
     "contact.send": "Надіслати",
     "contact.connect": "Зв'яжіться зі мною",
+  },
+  de: {
+    // Hero
+    "hero.title": "Anastasiia Buda",
+    "hero.subtitle": "Filmemacherin / Editorin / AI Visionarin",
+    "hero.aboutMe": "Uber mich",
+    
+    // About Modal
+    "about.title": "Uber mich",
+    "about.p1": "Hallo, ich bin Anastasiia, eine Filmemacherin und Regisseurin mit einer Leidenschaft fur unkonventionelles, skurriles und fantastisches Storytelling. Ich kreiere Visuals, die Humor, Surrealismus und immersive Asthetik verbinden und Narrative schaffen, die visuell beeindruckend und emotional fesselnd sind.",
+    "about.p2": "Reisen und das Erkunden verschiedener Kulturen inspirieren und bereichern standig meine filmische Vision. 2019 habe ich meinen Bachelor in Filmregie an der Kiewer Nationalen Universitat fur Theater, Film und Fernsehen abgeschlossen.",
+    "about.p3": "Von 2017 bis 2022 sammelte ich umfangreiche Erfahrungen bei Grossproduktionen mit Starlightmedia, Film.ua, No Stars Production, IQ Production usw., arbeitete in komplexen Drehbedingungen und entwickelte die Fahigkeiten, Teams unter herausfordernden Bedingungen zu fuhren. Danach fuhrte ich Regie bei eigenen Projekten, darunter Kurzfilme und Musikvideos, leitete Teams von uber 20 Personen und uberwachte die gesamte Produktion von der Konzeptentwicklung bis zur finalen Postproduktion.",
+    "about.p4": "Zwischen 2020 und 2022 arbeitete ich als Regisseurin bei Cinema Friends, leitete Projekte und traf kreative Entscheidungen fur hochwertigen, visuell durchdachten Content.",
+    "about.p5": "Seit 2022 habe ich meine Praxis als freie Horerin an der Leon Schiller Nationalen Filmhochschule in Lodz erweitert und bin spater in die Schweiz gezogen, wo ich experimentelle Fotografie und KI-integrierte Filmprojekte entwickelte.",
+    "about.p6": "Meine Arbeit wurde als Runner-up bei der 2025 Genero Creative Challenge ausgezeichnet, was meine Fahigkeit widerspiegelt, Vorstellungskraft, personlichen Stil und technologische Innovation zu uberzeugenden visuellen Narrativen zu vereinen.",
+    
+    // Portfolio
+    "portfolio.title": "Portfolio",
+    "portfolio.about": "Info",
+    "portfolio.myRole": "Meine Rolle",
+    
+    // Project: Funeral Agency
+    "project.funeral.title": "Bestattungsagentur der Zukunft",
+    "project.funeral.description": "Konzeptuelles Werbevideo, speziell fur die Genero AI Creative Challenge erstellt.\nAusgewahlt als Runner-Up.\nEine spekulative Vision einer Bestattungsagentur der Zukunft, die Abschiedsrituale durch Design, Technologie und sich wandelnde kulturelle Werte neu denkt.",
+    "project.funeral.role": "Konzept, Kreative Leitung, Visuelles Narrativ, AI Prompting, Schnitt",
+    
+    // Project: Music Video
+    "project.music.title": "Musikvideo",
+    "project.music.description": "Regie vom Konzept bis zur finalen Vision, Gestaltung von Geschichte, Visuals und Asthetik inspiriert von mythologischen Themen, wahrend ich das kreative Team leitete.",
+    "project.music.role": "Regisseurin & Kreative Leitung, Konzept & Produktionsuberwachung",
+    
+    // Creative Sprint
+    "sprint.title": "Kreativer Sprint",
+    "sprint.description": "Ausgewahlte Arbeiten aus einem Video-Marathon.\n40 Kurzvideos, die in zwei Wochen unter Expeditionsbedingungen nach vorgegebenen Themen gedreht und geschnitten wurden.\nSiegerteam.",
+    "sprint.role": "Konzept & Kreative Leitung, Story & visuelle Entwicklung, Teamfuhrung, Schnitt & Postproduktionsuberwachung",
+    
+    // Sprint Videos
+    "sprint.alien.title": "Alien-Tanz",
+    "sprint.alien.description": "Atmospharisches experimentelles Tanzvideo.",
+    "sprint.sands.title": "Sand der Stille",
+    "sprint.sands.description": "Experimenteller Kurzfilm uber Zeit, gedreht in einer Wustenlandschaft.",
+    "sprint.treasure.title": "Schatzsuche",
+    "sprint.treasure.description": "Experimenteller Western-Comedy-Kurzfilm, der ein verspieltes Konzept fur eine Lippenstift-Werbung vorstellt.",
+    
+    // Contact
+    "contact.title": "Lass uns gemeinsam Welten erschaffen",
+    "contact.subtitle": "Bereit, etwas Aussergewohnliches zu schaffen?",
+    "contact.name": "Ihr Name",
+    "contact.email": "Ihre E-Mail",
+    "contact.message": "Ihre Nachricht",
+    "contact.send": "Nachricht senden",
+    "contact.connect": "Kontaktieren Sie mich",
   },
 }
 

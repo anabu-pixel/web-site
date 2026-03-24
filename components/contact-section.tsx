@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import { SimpleInput, SimpleTextarea } from "@/components/ui/simple-input"
-import { Instagram, Linkedin } from "lucide-react"
+import { Linkedin } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export function ContactSection() {
@@ -147,16 +147,7 @@ export function ContactSection() {
 
           <div className="mt-12 pt-8 border-t border-purple-500/20">
             <p className="text-center text-gray-400 mb-6 font-[family-name:var(--font-space)]">{t("contact.connect")}</p>
-            <div className="flex justify-center gap-4">
-              <a
-                href="https://www.instagram.com/a.n.a.b.u/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-14 h-14 rounded-full flex items-center justify-center liquid-glass"
-              >
-                <Instagram className="w-7 h-7 text-white" />
-              </a>
+            <div className="flex justify-center">
               <a
                 href="https://www.linkedin.com/in/anastasiia-buda-film"
                 target="_blank"
