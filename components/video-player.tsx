@@ -13,8 +13,16 @@ export function VideoPlayer({ videoId, title }: VideoPlayerProps) {
 
   const handleFullscreen = () => {
     const el = wrapperRef.current
-    if (el && el.requestFullscreen) {
-      el.requestFullscreen()
+    if (!el || typeof el.requestFullscreen !== "function") return
+    try {
+      const result = el.requestFullscreen()
+      if (result && typeof result.catch === "function") {
+        // Fullscreen can be blocked by the iframe permissions policy (e.g. in the preview).
+        result.catch(() => window.open(`https://vimeo.com/${videoId}`, "_blank", "noopener,noreferrer"))
+      }
+    } catch {
+      // Fallback: open the video directly on Vimeo.
+      window.open(`https://vimeo.com/${videoId}`, "_blank", "noopener,noreferrer")
     }
   }
 
