@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
 type Language = "en" | "uk" | "de"
 
@@ -14,9 +14,9 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Hero
     "hero.title": "Anastasiia Buda",
-    "hero.subtitle": "Filmmaker / Editor / AI Visionary",
+    "hero.subtitle": "AI Art Director / Filmmaker",
     "hero.aboutMe": "About Me",
-    
+
     // About Modal
     "about.title": "About Me",
     "about.p1": "Hi, I'm Anastasiia, a filmmaker and director with a passion for unconventional, whimsical, and fantastical storytelling. I create visuals that blend humor, surrealism, and immersive aesthetics, crafting narratives that are both visually striking and emotionally engaging.",
@@ -25,27 +25,48 @@ const translations: Record<Language, Record<string, string>> = {
     "about.p4": "Between 2020 and 2022, I worked as a Director at Cinema Friends, overseeing projects and guiding creative decisions to deliver high-quality, visually thoughtful content.",
     "about.p5": "Since 2022, I have expanded my practice as a free auditor at the Leon Schiller National Film School in Lodz and later relocated to Switzerland, where I created experimental photography and AI-integrated film projects.",
     "about.p6": "My work was recognized as runner-up in the 2025 Genero Creative Challenge, reflecting my ability to merge imagination, personal style, and technological innovation into compelling visual narratives.",
-    
+
     // Portfolio
     "portfolio.title": "Portfolio",
     "portfolio.about": "About",
     "portfolio.myRole": "My Role",
-    
+
+    // Sections
+    "showreel.title": "AI Showreel",
+    "section.ai.title": "AI Projects",
+    "section.film.title": "Film Projects",
+    "label.objective": "Objective",
+    "label.whatIDid": "What I Did",
+
     // Project: Funeral Agency
     "project.funeral.title": "Funeral Agency of the Future",
     "project.funeral.description": "Conceptual advertising video created specifically for the Genero AI Creative Challenge.\nSelected as a Runner-Up.\nA speculative vision of a funeral agency of the future, rethinking rituals of farewell through design, technology, and changing cultural values.",
     "project.funeral.role": "Concept, Creative Direction, Visual Narrative, AI Prompting, Editing",
-    
+
+    // Project: The Jewel Universe
+    "jewel.title": "The Jewel Universe",
+    "jewel.subtitle": "Luxury / Jewellery",
+    "jewel.objective": "Reframe jewellery from a status symbol into a system of personal meaning.",
+    "jewel.whatIDid": "Creative strategy, concept development, marketing narrative exploration, AI art direction, filmmaking, editing and post-production.",
+    "jewel.compensate.title": "Compensate",
+    "jewel.micromacro.title": "Micro-macro",
+
+    // Project: Experimental Short Film
+    "exp.title": "Experimental Short Film",
+    "exp.objective": "Develop a distinctive visual storytelling style and create original characters from scratch.",
+    "exp.whatIDid": "Concept development, character building, visual worldbuilding, AI art direction, cinematography, editing and post-production.",
+    "exp.eclipse.title": "Eclipse",
+
     // Project: Music Video
     "project.music.title": "Music Video",
     "project.music.description": "Directed from concept to final vision, shaping story, visuals, and aesthetic inspired by mythological themes, while leading the creative team.",
     "project.music.role": "Director & Creative Lead, Concept & Production Oversight",
-    
+
     // Creative Sprint
     "sprint.title": "Creative Sprint",
     "sprint.description": "Selected works from a video marathon.\n40 short-form videos shot and edited in two weeks under expedition conditions, based on assigned themes.\nWinning team.",
     "sprint.role": "Concept & Creative Direction, Story & Visual Development, Team Leadership, Editing & Post-Production Oversight",
-    
+
     // Sprint Videos
     "sprint.alien.title": "Alien Dance",
     "sprint.alien.description": "Atmospheric experimental dance video.",
@@ -53,7 +74,7 @@ const translations: Record<Language, Record<string, string>> = {
     "sprint.sands.description": "Experimental short reflecting on time, filmed in a desert landscape.",
     "sprint.treasure.title": "Treasure Hunt",
     "sprint.treasure.description": "Experimental Western-comedy short, imagining a playful concept for a lipstick ad.",
-    
+
     // Contact
     "contact.title": "Let's Build Worlds Together",
     "contact.subtitle": "Ready to create something extraordinary?",
@@ -66,9 +87,9 @@ const translations: Record<Language, Record<string, string>> = {
   uk: {
     // Hero
     "hero.title": "Анастасія Буда",
-    "hero.subtitle": "Режисерка / Монтажерка / AI Візіонерка",
+    "hero.subtitle": "AI Арт-директорка / Режисерка",
     "hero.aboutMe": "Про мене",
-    
+
     // About Modal
     "about.title": "Про мене",
     "about.p1": "Привіт, я Анастасія — режисерка з пристрастю до нетипового, химерного та фантастичного сторітелінгу. Я створюю візуали, що поєднують гумор, сюрреалізм та імерсивну естетику, формуючи наративи, які є водночас візуально вражаючими та емоційно захопливими.",
@@ -77,27 +98,48 @@ const translations: Record<Language, Record<string, string>> = {
     "about.p4": "Між 2020 та 2022 роками я працювала режисеркою в Cinema Friends, керуючи проектами та приймаючи креативні рішення для створення високоякісного, візуально продуманого контенту.",
     "about.p5": "З 2022 року я розширила свою практику як вільний слухач у Національній кіношколі імені Леона Шиллера в Лодзі, а пізніше переїхала до Швейцарії, де створювала експериментальну фотографію та кінопроекти з інтеграцією AI.",
     "about.p6": "Моя робота була відзначена як runner-up на 2025 Genero Creative Challenge, що відображає мою здатність поєднувати уяву, особистий стиль та технологічні інновації у переконливих візуальних наративах.",
-    
+
     // Portfolio
     "portfolio.title": "Портфоліо",
     "portfolio.about": "Опис",
     "portfolio.myRole": "Моя роль",
-    
+
+    // Sections
+    "showreel.title": "AI Шоуріл",
+    "section.ai.title": "AI Проєкти",
+    "section.film.title": "Кінопроєкти",
+    "label.objective": "Мета",
+    "label.whatIDid": "Що я зробила",
+
     // Project: Funeral Agency
     "project.funeral.title": "Похоронне агентство майбутнього",
     "project.funeral.description": "Концептуальне рекламне відео, створене спеціально для Genero AI Creative Challenge.\nВідзначено як Runner-Up.\nСпекулятивне бачення похоронного агентства майбутнього, переосмислення ритуалів прощання через дизайн, технології та зміну культурних цінностей.",
     "project.funeral.role": "Концепт, Креативна режисура, Візуальний наратив, AI Промптинг, Монтаж",
-    
+
+    // Project: The Jewel Universe
+    "jewel.title": "The Jewel Universe",
+    "jewel.subtitle": "Люкс / Ювелірні вироби",
+    "jewel.objective": "Переосмислити ювелірні вироби зі статусного символу в систему особистих смислів.",
+    "jewel.whatIDid": "Креативна стратегія, розробка концепції, дослідження маркетингового наративу, AI арт-дирекшн, зйомка, монтаж та пост-продакшн.",
+    "jewel.compensate.title": "Compensate",
+    "jewel.micromacro.title": "Micro-macro",
+
+    // Project: Experimental Short Film
+    "exp.title": "Експериментальний короткометражний фільм",
+    "exp.objective": "Розробити впізнаваний візуальний стиль оповіді та створити оригінальних персонажів з нуля.",
+    "exp.whatIDid": "Розробка концепції, створення персонажів, візуальний ворлдбілдинг, AI арт-дирекшн, операторська робота, монтаж та пост-продакшн.",
+    "exp.eclipse.title": "Eclipse",
+
     // Project: Music Video
     "project.music.title": "Музичне відео",
     "project.music.description": "Режисура від концепції до фінального бачення, формування історії, візуалів та естетики, натхненної міфологічними темами, з керуванням креативною командою.",
     "project.music.role": "Режисерка та Креативний лід, Концепт та Нагляд за продакшеном",
-    
+
     // Creative Sprint
     "sprint.title": "Креативний Спринт",
     "sprint.description": "Вибрані роботи з відео-марафону.\n40 коротких відео, знятих та змонтованих за два тижні в експедиційних умовах, за заданими темами.\nКоманда-переможець.",
     "sprint.role": "Концепт та Креативна режисура, Розробка історії та візуалів, Лідерство команди, Монтаж та Нагляд за пост-продакшеном",
-    
+
     // Sprint Videos
     "sprint.alien.title": "Інопланетний танець",
     "sprint.alien.description": "Атмосферне експериментальне танцювальне відео.",
@@ -105,7 +147,7 @@ const translations: Record<Language, Record<string, string>> = {
     "sprint.sands.description": "Експериментальний короткометражний фільм про час, знятий у пустельному ландшафті.",
     "sprint.treasure.title": "Полювання за скарбами",
     "sprint.treasure.description": "Експериментальний вестерн-комедійний короткометражний фільм, що уявляє грайливу концепцію реклами помади.",
-    
+
     // Contact
     "contact.title": "Давайте створювати світи разом",
     "contact.subtitle": "Готові створити щось надзвичайне?",
@@ -118,9 +160,9 @@ const translations: Record<Language, Record<string, string>> = {
   de: {
     // Hero
     "hero.title": "Anastasiia Buda",
-    "hero.subtitle": "Filmemacherin / Editorin / AI Visionarin",
+    "hero.subtitle": "AI Art Director / Filmemacherin",
     "hero.aboutMe": "Uber mich",
-    
+
     // About Modal
     "about.title": "Uber mich",
     "about.p1": "Hallo, ich bin Anastasiia, eine Filmemacherin und Regisseurin mit einer Leidenschaft fur unkonventionelles, skurriles und fantastisches Storytelling. Ich kreiere Visuals, die Humor, Surrealismus und immersive Asthetik verbinden und Narrative schaffen, die visuell beeindruckend und emotional fesselnd sind.",
@@ -129,27 +171,48 @@ const translations: Record<Language, Record<string, string>> = {
     "about.p4": "Zwischen 2020 und 2022 arbeitete ich als Regisseurin bei Cinema Friends, leitete Projekte und traf kreative Entscheidungen fur hochwertigen, visuell durchdachten Content.",
     "about.p5": "Seit 2022 habe ich meine Praxis als freie Horerin an der Leon Schiller Nationalen Filmhochschule in Lodz erweitert und bin spater in die Schweiz gezogen, wo ich experimentelle Fotografie und KI-integrierte Filmprojekte entwickelte.",
     "about.p6": "Meine Arbeit wurde als Runner-up bei der 2025 Genero Creative Challenge ausgezeichnet, was meine Fahigkeit widerspiegelt, Vorstellungskraft, personlichen Stil und technologische Innovation zu uberzeugenden visuellen Narrativen zu vereinen.",
-    
+
     // Portfolio
     "portfolio.title": "Portfolio",
     "portfolio.about": "Info",
     "portfolio.myRole": "Meine Rolle",
-    
+
+    // Sections
+    "showreel.title": "AI Showreel",
+    "section.ai.title": "AI Projekte",
+    "section.film.title": "Filmprojekte",
+    "label.objective": "Ziel",
+    "label.whatIDid": "Was ich gemacht habe",
+
     // Project: Funeral Agency
     "project.funeral.title": "Bestattungsagentur der Zukunft",
     "project.funeral.description": "Konzeptuelles Werbevideo, speziell fur die Genero AI Creative Challenge erstellt.\nAusgewahlt als Runner-Up.\nEine spekulative Vision einer Bestattungsagentur der Zukunft, die Abschiedsrituale durch Design, Technologie und sich wandelnde kulturelle Werte neu denkt.",
     "project.funeral.role": "Konzept, Kreative Leitung, Visuelles Narrativ, AI Prompting, Schnitt",
-    
+
+    // Project: The Jewel Universe
+    "jewel.title": "The Jewel Universe",
+    "jewel.subtitle": "Luxus / Schmuck",
+    "jewel.objective": "Schmuck vom Statussymbol zu einem System personlicher Bedeutung neu denken.",
+    "jewel.whatIDid": "Kreativstrategie, Konzeptentwicklung, Erkundung des Marketing-Narrativs, AI Art Direction, Filmproduktion, Schnitt und Postproduktion.",
+    "jewel.compensate.title": "Compensate",
+    "jewel.micromacro.title": "Micro-macro",
+
+    // Project: Experimental Short Film
+    "exp.title": "Experimenteller Kurzfilm",
+    "exp.objective": "Einen unverwechselbaren visuellen Erzahlstil entwickeln und originelle Charaktere von Grund auf erschaffen.",
+    "exp.whatIDid": "Konzeptentwicklung, Charakterentwicklung, visuelles Worldbuilding, AI Art Direction, Kameraarbeit, Schnitt und Postproduktion.",
+    "exp.eclipse.title": "Eclipse",
+
     // Project: Music Video
     "project.music.title": "Musikvideo",
     "project.music.description": "Regie vom Konzept bis zur finalen Vision, Gestaltung von Geschichte, Visuals und Asthetik inspiriert von mythologischen Themen, wahrend ich das kreative Team leitete.",
     "project.music.role": "Regisseurin & Kreative Leitung, Konzept & Produktionsuberwachung",
-    
+
     // Creative Sprint
     "sprint.title": "Kreativer Sprint",
     "sprint.description": "Ausgewahlte Arbeiten aus einem Video-Marathon.\n40 Kurzvideos, die in zwei Wochen unter Expeditionsbedingungen nach vorgegebenen Themen gedreht und geschnitten wurden.\nSiegerteam.",
     "sprint.role": "Konzept & Kreative Leitung, Story & visuelle Entwicklung, Teamfuhrung, Schnitt & Postproduktionsuberwachung",
-    
+
     // Sprint Videos
     "sprint.alien.title": "Alien-Tanz",
     "sprint.alien.description": "Atmospharisches experimentelles Tanzvideo.",
@@ -157,7 +220,7 @@ const translations: Record<Language, Record<string, string>> = {
     "sprint.sands.description": "Experimenteller Kurzfilm uber Zeit, gedreht in einer Wustenlandschaft.",
     "sprint.treasure.title": "Schatzsuche",
     "sprint.treasure.description": "Experimenteller Western-Comedy-Kurzfilm, der ein verspieltes Konzept fur eine Lippenstift-Werbung vorstellt.",
-    
+
     // Contact
     "contact.title": "Lass uns gemeinsam Welten erschaffen",
     "contact.subtitle": "Bereit, etwas Aussergewohnliches zu schaffen?",
@@ -173,6 +236,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
+
+  // Switch to Cyrillic-capable fonts only on the Ukrainian version by toggling
+  // a class on <body>; globals.css remaps the font CSS variables under it.
+  useEffect(() => {
+    document.body.classList.toggle("lang-uk", language === "uk")
+  }, [language])
 
   const t = (key: string): string => {
     return translations[language][key] || key
