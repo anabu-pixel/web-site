@@ -151,13 +151,24 @@ export function PortfolioCases() {
         <div className="mb-16">
           <SectionHeading title={t("section.ai.title")} />
 
-          {/* Funeral Agency of the Future */}
-          <FeaturedProject
-            vimeoId="1158573071"
-            titleKey="project.funeral.title"
-            descKey="project.funeral.description"
-            roleKey="project.funeral.role"
-          />
+          {/* Eternum - Funeral Agency */}
+          <div className="relative mb-8">
+            <div className="liquid-glass-card rounded-3xl p-6 md:p-10">
+              <h3 className="font-[family-name:var(--font-orbitron)] text-2xl md:text-4xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 magic-glow">
+                {t("project.funeral.title")}
+              </h3>
+              <p className="text-purple-400/80 text-sm uppercase tracking-[0.2em] mb-6 font-[family-name:var(--font-orbitron)]">
+                {t("project.funeral.subtitle")}
+              </p>
+
+              <div className="space-y-5 mb-8">
+                <InfoBlock label={t("label.objective")} value={t("project.funeral.objective")} />
+                <InfoBlock label={t("label.whatIDid")} value={t("project.funeral.whatIDid")} />
+              </div>
+
+              <VimeoPlayer vimeoId="1158573071" className="rounded-2xl border border-purple-500/20" />
+            </div>
+          </div>
 
           {/* The Jewel Universe - campaign with two episodes */}
           <div className="relative mt-12 mb-8">

@@ -39,9 +39,10 @@ const translations: Record<Language, Record<string, string>> = {
     "label.whatIDid": "What I Did",
 
     // Project: Funeral Agency
-    "project.funeral.title": "Funeral Agency of the Future",
-    "project.funeral.description": "Conceptual advertising video created specifically for the Genero AI Creative Challenge.\nSelected as a Runner-Up.\nA speculative vision of a funeral agency of the future, rethinking rituals of farewell through design, technology, and changing cultural values.",
-    "project.funeral.role": "Concept, Creative Direction, Visual Narrative, AI Prompting, Editing",
+    "project.funeral.title": "Eternum",
+    "project.funeral.subtitle": "Funeral Agency",
+    "project.funeral.objective": "Reframe funeral services from a static ritual into a modular digital system based on personalization, long-term engagement, and product-like service logic.",
+    "project.funeral.whatIDid": "AI art direction, concept development, visual generation, filmmaking, and full post-production.",
 
     // Project: The Jewel Universe
     "jewel.title": "The Jewel Universe",
@@ -112,9 +113,10 @@ const translations: Record<Language, Record<string, string>> = {
     "label.whatIDid": "Що я зробила",
 
     // Project: Funeral Agency
-    "project.funeral.title": "Похоронне агентство майбутнього",
-    "project.funeral.description": "Концептуальне рекламне відео, створене спеціально для Genero AI Creative Challenge.\nВідзначено як Runner-Up.\nСпекулятивне бачення похоронного агентства майбутнього, переосмислення ритуалів прощання через дизайн, технології та зміну культурних цінностей.",
-    "project.funeral.role": "Концепт, Креативна режисура, Візуальний наратив, AI Промптинг, Монтаж",
+    "project.funeral.title": "Eternum",
+    "project.funeral.subtitle": "Похоронне агентство",
+    "project.funeral.objective": "Переосмислити похоронні послуги зі статичного ритуалу в модульну цифрову систему, засновану на персоналізації, довгостроковій залученості та продуктовій логіці сервісу.",
+    "project.funeral.whatIDid": "AI арт-дирекшн, розробка концепції, генерація візуалів, зйомка та повний пост-продакшн.",
 
     // Project: The Jewel Universe
     "jewel.title": "The Jewel Universe",
@@ -185,9 +187,10 @@ const translations: Record<Language, Record<string, string>> = {
     "label.whatIDid": "Was ich gemacht habe",
 
     // Project: Funeral Agency
-    "project.funeral.title": "Bestattungsagentur der Zukunft",
-    "project.funeral.description": "Konzeptuelles Werbevideo, speziell fur die Genero AI Creative Challenge erstellt.\nAusgewahlt als Runner-Up.\nEine spekulative Vision einer Bestattungsagentur der Zukunft, die Abschiedsrituale durch Design, Technologie und sich wandelnde kulturelle Werte neu denkt.",
-    "project.funeral.role": "Konzept, Kreative Leitung, Visuelles Narrativ, AI Prompting, Schnitt",
+    "project.funeral.title": "Eternum",
+    "project.funeral.subtitle": "Bestattungsagentur",
+    "project.funeral.objective": "Bestattungsdienstleistungen von einem statischen Ritual zu einem modularen digitalen System neu denken, das auf Personalisierung, langfristigem Engagement und produktahnlicher Servicelogik basiert.",
+    "project.funeral.whatIDid": "AI Art Direction, Konzeptentwicklung, visuelle Generierung, Filmproduktion und vollstandige Postproduktion.",
 
     // Project: The Jewel Universe
     "jewel.title": "The Jewel Universe",
