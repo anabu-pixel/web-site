@@ -2,43 +2,27 @@
 
 import { LanguageSwitcher } from "./language-switcher"
 import { useLanguage } from "@/lib/language-context"
-import Link from "next/link"
 
-export function Header() {
+interface HeaderProps {
+  onAboutClick: () => void
+}
+
+export function Header({ onAboutClick }: HeaderProps) {
   const { t } = useLanguage()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
-            Anastasiia Buda
-          </Link>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <span className="font-display text-lg font-bold tracking-widest text-foreground">AB</span>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="#work"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t.nav.work}
-            </Link>
-            <Link
-              href="#about"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t.nav.about}
-            </Link>
-            <Link
-              href="#contact"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t.nav.contact}
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher />
-          </div>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onAboutClick}
+            className="rounded-full border border-border bg-secondary/40 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur-sm transition-colors hover:bg-secondary"
+          >
+            {t.nav.aboutMe}
+          </button>
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

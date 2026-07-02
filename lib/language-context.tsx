@@ -1,45 +1,44 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
-import { type Locale, getTranslation } from "./translations"
+import { type Language, translations, type Translation } from "@/lib/translations"
 
-type LanguageContextType = {
-  locale: Locale
-  setLocale: (locale: Locale) => void
-  t: ReturnType<typeof getTranslation>
+interface LanguageContextValue {
+  language: Language
+  setLanguage: (lang: Language) => void
+  t: Translation
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en")
-  const [t, setT] = useState(getTranslation("en"))
+  const [language, setLanguageState] = useState<Language>("en")
 
   useEffect(() => {
-    const savedLocale = localStorage.getItem("locale") as Locale
-    if (savedLocale && ["en", "ua", "de"].includes(savedLocale)) {
-      setLocale(savedLocale)
-      setT(getTranslation(savedLocale))
+    const stored = typeof window !== "undefined" ? window.localStorage.getItem("language") : null
+    if (stored === "en" || stored === "ua" || stored === "de") {
+      setLanguageState(stored)
     }
   }, [])
 
-  const handleSetLocale = (newLocale: Locale) => {
-    setLocale(newLocale)
-    setT(getTranslation(newLocale))
-    localStorage.setItem("locale", newLocale)
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang)
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("language", lang)
+    }
   }
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale: handleSetLocale, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>
       {children}
     </LanguageContext.Provider>
   )
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
-  if (context === undefined) {
+  const ctx = useContext(LanguageContext)
+  if (!ctx) {
     throw new Error("useLanguage must be used within a LanguageProvider")
   }
-  return context
+  return ctx
 }
