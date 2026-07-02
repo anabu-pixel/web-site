@@ -30,26 +30,27 @@ const manrope = Manrope({
 })
 
 export const metadata = {
-  title: "Anastasiia Buda | Filmmaker & Editor",
-  description: "Creative filmmaker, video editor and AI visionary. Bringing visions to life through cinematic storytelling.",
+  metadataBase: new URL("https://v0-abudafilm.vercel.app"),
+  title: "Anastasiia Buda | AI Art Director & Filmmaker",
+  description: "AI Art Director and Filmmaker. Bringing visions to life through cinematic storytelling.",
   openGraph: {
-    title: "Anastasiia Buda | Filmmaker & Editor",
-    description: "Creative filmmaker, video editor and AI visionary. Bringing visions to life through cinematic storytelling.",
+    title: "Anastasiia Buda | AI Art Director & Filmmaker",
+    description: "AI Art Director and Filmmaker. Bringing visions to life through cinematic storytelling.",
     images: [
       {
-        url: "/og-image.jpg?v=2",
-        width: 1200,
-        height: 630,
-        alt: "Anastasiia Buda - Filmmaker Portfolio",
+        url: "/og-image.png?v=3",
+        width: 584,
+        height: 558,
+        alt: "Anastasiia Buda - AI Art Director & Filmmaker",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anastasiia Buda | Filmmaker & Editor",
-    description: "Creative filmmaker, video editor and AI visionary.",
-    images: ["/og-image.jpg?v=2"],
+    title: "Anastasiia Buda | AI Art Director & Filmmaker",
+    description: "AI Art Director and Filmmaker.",
+    images: ["/og-image.png?v=3"],
   },
     generator: 'v0.app'
 }
