@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import type { Metadata } from "next"
-import { Inter, Orbitron } from "next/font/google"
-import "./globals.css"
-import { LanguageProvider } from "@/lib/language-context"
-
-const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
-})
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  variable: "--font-orbitron",
-})
-
-export const metadata: Metadata = {
-  title: "Anastasiia Buda | Filmmaker & Editor",
-  description: "Filmmaker, Editor, and AI Visionary creating compelling visual narratives",
-=======
 import React from "react"
 import { Orbitron, Space_Grotesk } from "next/font/google"
 import "./globals.css"
@@ -58,7 +38,6 @@ export const metadata = {
     images: ["/og-image.jpg?v=2"],
   },
     generator: 'v0.app'
->>>>>>> origin/main
 }
 
 export default function RootLayout({
@@ -67,17 +46,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-<<<<<<< HEAD
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} bg-background`}>
-      <body className="font-sans antialiased">
-        <LanguageProvider>{children}</LanguageProvider>
-=======
     <html lang="en" className="dark">
       <body className={`${orbitron.variable} ${spaceGrotesk.variable} bg-black text-white antialiased`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>
->>>>>>> origin/main
       </body>
     </html>
   )
