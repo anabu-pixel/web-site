@@ -552,3 +552,37 @@
 .video-container:-webkit-full-screen .video-controls {
   display: none !important;
 }
+
+/* ==========================================
+   VIMEO CUSTOM SEEK SLIDER
+   ========================================== */
+
+.vimeo-seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+}
+
+.vimeo-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.9);
+  cursor: pointer;
+}
+
+.vimeo-seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.9);
+  cursor: pointer;
+}
