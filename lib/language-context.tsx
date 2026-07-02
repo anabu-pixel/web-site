@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
 type Language = "en" | "uk" | "de"
 
@@ -236,6 +236,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
+
+  // Switch to Cyrillic-capable fonts only on the Ukrainian version by toggling
+  // a class on <body>; globals.css remaps the font CSS variables under it.
+  useEffect(() => {
+    document.body.classList.toggle("lang-uk", language === "uk")
+  }, [language])
 
   const t = (key: string): string => {
     return translations[language][key] || key

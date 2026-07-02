@@ -1,5 +1,5 @@
 import React from "react"
-import { Orbitron, Space_Grotesk } from "next/font/google"
+import { Orbitron, Space_Grotesk, Exo_2, Manrope } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from "@/lib/language-context"
 
@@ -12,6 +12,20 @@ const orbitron = Orbitron({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space",
+  display: "swap",
+})
+
+// Cyrillic-capable fonts used ONLY on the Ukrainian version of the site.
+// Exo 2 mirrors Orbitron's geometric/techno look; Manrope mirrors Space Grotesk.
+const exo2 = Exo_2({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-exo",
+  display: "swap",
+})
+
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-manrope",
   display: "swap",
 })
 
@@ -47,7 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${orbitron.variable} ${spaceGrotesk.variable} bg-black text-white antialiased`}>
+      <body className={`${orbitron.variable} ${spaceGrotesk.variable} ${exo2.variable} ${manrope.variable} bg-black text-white antialiased`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

@@ -586,3 +586,16 @@
   box-shadow: 0 0 8px rgba(168, 85, 247, 0.9);
   cursor: pointer;
 }
+
+/* ==========================================
+   UKRAINIAN (CYRILLIC) FONT OVERRIDE
+   Applied only when <body> has the .lang-uk class (set for the UA language).
+   The whole UI references var(--font-orbitron) / var(--font-space), so
+   remapping them here swaps every heading/body text to Cyrillic-capable
+   fonts on the Ukrainian version only. EN and DE keep Orbitron / Space Grotesk.
+   ========================================== */
+
+body.lang-uk {
+  --font-orbitron: var(--font-exo), "Exo 2", sans-serif !important;
+  --font-space: var(--font-manrope), "Manrope", sans-serif !important;
+}
