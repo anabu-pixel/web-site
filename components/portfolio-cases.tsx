@@ -110,14 +110,24 @@ function VideoCard({ video, showRole = true, titleKey, descKey, roleKey }: { vid
   const openFullscreen = () => {
     const element = videoContainerRef.current
     if (!element) return
-    
-    // Try native fullscreen first (works on desktop)
-    if (element.requestFullscreen) {
-      element.requestFullscreen()
-    } else if ((element as HTMLDivElement & { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen) {
-      (element as HTMLDivElement & { webkitRequestFullscreen: () => void }).webkitRequestFullscreen()
-    } else {
-      // Fallback for iOS - use modal
+
+    // Try native fullscreen first (works on desktop). This can throw or reject
+    // when blocked by the iframe permissions policy (e.g. in the preview), so
+    // we guard it and fall back to the in-page modal.
+    try {
+      if (element.requestFullscreen) {
+        const result = element.requestFullscreen()
+        if (result && typeof result.catch === "function") {
+          result.catch(() => setIsFullscreen(true))
+        }
+      } else if ((element as HTMLDivElement & { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen) {
+        (element as HTMLDivElement & { webkitRequestFullscreen: () => void }).webkitRequestFullscreen()
+      } else {
+        // Fallback for iOS - use modal
+        setIsFullscreen(true)
+      }
+    } catch {
+      // Fullscreen blocked (permissions policy) - use in-page modal instead
       setIsFullscreen(true)
     }
   }
